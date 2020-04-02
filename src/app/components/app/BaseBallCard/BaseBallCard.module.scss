@@ -1,0 +1,15 @@
+.container {
+  color: #000000;
+}
+
+.name {
+  font-size: 22px;
+}
+
+.info {
+  align-items: baseline;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding-top: 16px;
+}

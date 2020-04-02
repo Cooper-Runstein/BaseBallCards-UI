@@ -1,9 +1,14 @@
 import * as React from "react";
+import cn from "classnames";
 
 import styles from "./Card.module.scss";
 
-export type CardProps = {};
+export type CardProps = {
+  className: string;
+};
 
-export const Card: React.FC<CardProps> = React.memo(({ children }) => (
-  <div className={styles.container}>{children}</div>
-));
+export const Card: React.FC<CardProps> = React.memo(
+  ({ className, children }) => (
+    <div className={cn(styles.container, className)}>{children}</div>
+  )
+);
