@@ -1,10 +1,11 @@
 import React from "react";
 
 import { BaseBallCardType } from "../types";
-import { BaseBallCard } from "../components/app";
+import { BaseBallCard } from "../components";
+import { apiRequest, RequestMethod, EndPoints } from "../service";
+import { StoreContextWrapper } from "../contexts";
 
 import styles from "./App.module.scss";
-import { apiRequest, RequestMethod, EndPoints } from "../service";
 
 const cards: { [id: string]: BaseBallCardType } = {
   "123": {
@@ -54,26 +55,32 @@ const initializeApp = async () => {
   console.log({ result });
 };
 
+const ContextWrappers: React.FC = ({ children }) => {
+  return <StoreContextWrapper>{children}</StoreContextWrapper>;
+};
+
 export function App() {
   React.useEffect(() => {
     initializeApp();
   });
 
   return (
-    <div className={styles.container}>
-      <header className={styles.header}>
-        <h2>Baseball Card App</h2>
-      </header>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row"
-        }}
-      >
-        {Object.values(cards).map(card => {
-          return <BaseBallCard card={card} />;
-        })}
+    <ContextWrappers>
+      <div className={styles.container}>
+        <header className={styles.header}>
+          <h2>Baseball Card App</h2>
+        </header>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row"
+          }}
+        >
+          {Object.values(cards).map(card => {
+            return <BaseBallCard card={card} />;
+          })}
+        </div>
       </div>
-    </div>
+    </ContextWrappers>
   );
 }

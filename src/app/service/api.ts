@@ -1,3 +1,5 @@
+import { apiToStore } from "./serializers";
+
 const url = "http://127.0.0.1:8000";
 
 export enum EndPoints {
@@ -29,7 +31,7 @@ export const apiRequest = async ({
     });
 
     const json = await result.json();
-    return json;
+    return apiToStore(json);
   } catch (e) {
     console.warn(
       `Error in Request: url: ${endpoint} - method: ${method} - body: ${body} `

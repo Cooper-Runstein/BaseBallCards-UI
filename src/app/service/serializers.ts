@@ -1,3 +1,5 @@
+import { camelCaseAllKeys } from "../utils";
+
 type ApiResponseShape<T> = {
   count: number;
   next: null | string;
@@ -6,5 +8,5 @@ type ApiResponseShape<T> = {
 };
 
 export function apiToStore<T>(response: ApiResponseShape<T>) {
-  return response.results.map(obj => {});
+  return response.results.map(camelCaseAllKeys);
 }
