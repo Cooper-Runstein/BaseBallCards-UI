@@ -1,4 +1,4 @@
-import { Card } from "../../core";
+import { Card } from "../../common";
 
 import * as React from "react";
 import { BaseBallCardType } from "../../../types";
