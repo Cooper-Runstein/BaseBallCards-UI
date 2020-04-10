@@ -20,11 +20,9 @@ export const BaseBallCard: React.FunctionComponent<BaseBallCardProps> = React.me
             {card.player.firstName} {card.player.lastName}
           </div>
           <div className={styles.card}>
-            {card.card.company.name} {card.card.year}
+            {card.company.name} {card.year}
           </div>
-          <div className={styles.team}>
-            {card.team.city} {card.team.name}
-          </div>
+          <div className={styles.team}>{card.team.name}</div>
         </div>
       </Card>
     );

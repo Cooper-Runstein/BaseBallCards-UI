@@ -1,3 +1,7 @@
-export type AppStateType = {};
+import { BaseBallCardType } from "../types";
 
-export const initialState: AppStateType = {};
+export type AppStateType = {
+  cards: BaseBallCardType[];
+};
+
+export const initialState: AppStateType = { cards: [] };

@@ -1,11 +1,11 @@
 import React from "react";
 
 import { BaseBallCardType } from "../types";
-import { BaseBallCard } from "../components";
-import { apiRequest, RequestMethod, EndPoints } from "../service";
 import { StoreContextWrapper } from "../contexts";
 
 import styles from "./App.module.scss";
+import { useInitializeApp } from "../hooks/useInitializeApp";
+import { CardsDisplay } from "../components/app/CardsDisplay/CardsDisplay";
 
 const cards: { [id: string]: BaseBallCardType } = {
   "123": {
@@ -15,15 +15,11 @@ const cards: { [id: string]: BaseBallCardType } = {
       lastName: "Jeter"
     },
     team: {
-      id: "NYY",
-      name: "Yankees",
-      city: "New York"
+      name: "New York Yankees"
     },
-    card: {
-      year: 2011,
-      company: {
-        name: "Topps"
-      }
+    year: 2011,
+    company: {
+      name: "Topps"
     }
   },
   "124": {
@@ -33,54 +29,38 @@ const cards: { [id: string]: BaseBallCardType } = {
       lastName: "Betts"
     },
     team: {
-      id: "BOS",
-      name: "Red Sox",
-      city: "Boston"
+      name: "Boston Red Sox"
     },
-    card: {
-      year: 2019,
-      company: {
-        name: "Topps"
-      }
+
+    year: 2019,
+    company: {
+      name: "Topps"
     }
   }
 };
 
-const initializeApp = async () => {
-  const result = await apiRequest({
-    method: RequestMethod.GET,
-    endpoint: EndPoints.BASE_BALL_CARDS
-  });
-
-  console.log({ result });
-};
+const initializeApp = async () => {};
 
 const ContextWrappers: React.FC = ({ children }) => {
   return <StoreContextWrapper>{children}</StoreContextWrapper>;
 };
 
-export function App() {
-  React.useEffect(() => {
-    initializeApp();
-  });
+const StoreInitializer: React.FC = ({ children }) => {
+  useInitializeApp();
+  return <>{children}</>;
+};
 
+export function App() {
   return (
     <ContextWrappers>
-      <div className={styles.container}>
-        <header className={styles.header}>
-          <h2>Baseball Card App</h2>
-        </header>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row"
-          }}
-        >
-          {Object.values(cards).map(card => {
-            return <BaseBallCard card={card} />;
-          })}
+      <StoreInitializer>
+        <div className={styles.container}>
+          <header className={styles.header}>
+            <h2>Baseball Card App</h2>
+          </header>
+          <CardsDisplay />
         </div>
-      </div>
+      </StoreInitializer>
     </ContextWrappers>
   );
 }

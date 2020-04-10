@@ -19,11 +19,11 @@ type ApiRequestType = {
   body?: any;
 };
 
-export const apiRequest = async ({
+export async function apiRequest<T>({
   endpoint,
   method,
   body
-}: ApiRequestType) => {
+}: ApiRequestType) {
   try {
     const result = await fetch(`${url}/${endpoint}/?format=json`, {
       method,
@@ -31,7 +31,7 @@ export const apiRequest = async ({
     });
 
     const json = await result.json();
-    return apiToStore(json);
+    return apiToStore<T>(json);
   } catch (e) {
     console.warn(
       `Error in Request: url: ${endpoint} - method: ${method} - body: ${body} `
@@ -39,4 +39,4 @@ export const apiRequest = async ({
 
     throw e;
   }
-};
+}

@@ -1,9 +1,9 @@
 import * as React from "react";
-import { AppStateType } from "../../store";
+import { AppStateType, Action } from "../../store";
 
 export type StoreContextType = {
-  dispatch: any;
+  dispatch: React.Dispatch<Action>;
   state: AppStateType;
 };
 
-export const StoreContext = React.createContext({} as AppStateType);
+export const StoreContext = React.createContext({} as StoreContextType);

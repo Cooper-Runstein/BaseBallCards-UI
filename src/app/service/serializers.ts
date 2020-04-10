@@ -7,6 +7,6 @@ type ApiResponseShape<T> = {
   results: T[];
 };
 
-export function apiToStore<T>(response: ApiResponseShape<T>) {
+export function apiToStore<T>(response: ApiResponseShape<T>): T[] {
   return response.results.map(camelCaseAllKeys);
 }

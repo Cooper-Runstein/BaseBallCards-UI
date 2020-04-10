@@ -2,8 +2,7 @@ export type BaseBallCardType = {
   id: string;
   player: PlayerType;
   team: TeamType;
-  card: CardType;
-};
+} & CardType;
 
 type PlayerType = {
   firstName: string;
@@ -11,9 +10,7 @@ type PlayerType = {
 };
 
 type TeamType = {
-  id: string;
   name: string;
-  city: string;
 };
 
 type CardType = {

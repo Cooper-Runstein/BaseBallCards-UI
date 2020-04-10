@@ -1,1 +1,1 @@
-export * from "./useStoreContext";
+export * from "./useStoreContext.hook";
