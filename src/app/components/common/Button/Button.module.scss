@@ -1,0 +1,11 @@
+@import "../../../styles/colors.scss";
+
+.container {
+  background-color: $blue1;
+  border: 2px white solid;
+  border-radius: 16px;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 8px;
+}
