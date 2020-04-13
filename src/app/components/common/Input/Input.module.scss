@@ -1,0 +1,9 @@
+.container {
+  border: solid white 2px;
+  border-radius: 8px;
+  padding: 8px;
+
+  &.error {
+    background-color: red;
+  }
+}
