@@ -8,6 +8,7 @@ import { Button, Card, Input } from "../../common";
 import { transformObjectByKey } from "../../../utils";
 
 import styles from "./CardsDisplay.module.scss";
+import { apiRequest, EndPoints, RequestMethod } from "../../../service";
 
 const inputs: {
   [key: string]: {
@@ -46,13 +47,22 @@ export const CardsDisplay: React.FunctionComponent<CardsDisplayProps> = React.me
 
     const submit = () => {
       reset();
+      apiRequest({
+        endpoint: EndPoints.BASE_BALL_CARDS,
+        method: RequestMethod.POST,
+        body: {
+          firstName: "Derek",
+          lastName: "Jeter"
+        }
+      });
     };
 
     return (
       <div className={styles.container}>
-        {cards.map(card => {
-          return <BaseBallCard card={card} key={card.id} />;
+        {cards.listCards?.items?.map(card => {
+          return card ? <BaseBallCard card={card} key={card.id} /> : <></>;
         })}
+
         <Card className={styles.newCard}>
           {Object.keys(inputs).map(key => {
             return (

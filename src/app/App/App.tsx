@@ -1,45 +1,16 @@
 import React from "react";
 
-import { BaseBallCardType } from "../types";
-import { StoreContextWrapper } from "../contexts";
+import Amplify from "aws-amplify";
+import { withAuthenticator } from "aws-amplify-react";
+import aws_exports from "../../aws-exports";
 
-import styles from "./App.module.scss";
+import { StoreContextWrapper } from "../contexts";
 import { useInitializeApp } from "../hooks/useInitializeApp";
+
 import { CardsDisplay } from "../components/app/CardsDisplay/CardsDisplay";
 
-const cards: { [id: string]: BaseBallCardType } = {
-  "123": {
-    id: "123",
-    player: {
-      firstName: "Derek",
-      lastName: "Jeter"
-    },
-    team: {
-      name: "New York Yankees"
-    },
-    year: 2011,
-    company: {
-      name: "Topps"
-    }
-  },
-  "124": {
-    id: "124",
-    player: {
-      firstName: "Mookie",
-      lastName: "Betts"
-    },
-    team: {
-      name: "Boston Red Sox"
-    },
-
-    year: 2019,
-    company: {
-      name: "Topps"
-    }
-  }
-};
-
-const initializeApp = async () => {};
+import styles from "./App.module.scss";
+Amplify.configure(aws_exports);
 
 const ContextWrappers: React.FC = ({ children }) => {
   return <StoreContextWrapper>{children}</StoreContextWrapper>;
@@ -50,7 +21,7 @@ const StoreInitializer: React.FC = ({ children }) => {
   return <>{children}</>;
 };
 
-export function App() {
+function BaseApp() {
   return (
     <ContextWrappers>
       <StoreInitializer>
@@ -64,3 +35,5 @@ export function App() {
     </ContextWrappers>
   );
 }
+
+export const App = withAuthenticator(BaseApp);

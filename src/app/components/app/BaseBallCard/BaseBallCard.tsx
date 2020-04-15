@@ -5,7 +5,7 @@ import { BaseBallCardType } from "../../../types";
 
 import styles from "./BaseBallCard.module.scss";
 
-export type BaseBallCardProps = { card: BaseBallCardType };
+export type BaseBallCardProps = { card: any };
 
 export const BaseBallCard: React.FunctionComponent<BaseBallCardProps> = React.memo(
   ({ card }) => {

@@ -1,0 +1,11 @@
+{
+    "AppSyncApiName": "BaseBallAPI",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": "false",
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authbaseballapi523c4bc2",
+            "Outputs.UserPoolId"
+        ]
+    }
+}

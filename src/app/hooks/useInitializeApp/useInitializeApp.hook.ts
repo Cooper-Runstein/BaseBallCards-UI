@@ -1,9 +1,12 @@
 import * as React from "react";
 
 import { apiRequest, RequestMethod, EndPoints } from "../../service";
+import { API, graphqlOperation } from "aws-amplify";
+
 import { useStoreContext } from "../.";
 import { ActionType } from "../../store";
-import { BaseBallCardType } from "../../types";
+import { listCards } from "../../../graphql/queries";
+import { ListCardsQuery } from "../../../API";
 
 /**
  * Hook used to fetch all relevant data on initial load.
@@ -13,14 +16,13 @@ export async function useInitializeApp() {
 
   React.useEffect(() => {
     const initialize = async () => {
-      const cards = await apiRequest<BaseBallCardType>({
-        method: RequestMethod.GET,
-        endpoint: EndPoints.BASE_BALL_CARDS
-      });
+      const response: { data: ListCardsQuery } = (await API.graphql(
+        graphqlOperation(listCards)
+      )) as { data: ListCardsQuery };
 
       dispatch({
         type: ActionType.SET_CARDS,
-        data: { cards }
+        data: response.data
       });
     };
 

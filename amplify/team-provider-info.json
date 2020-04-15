@@ -1,0 +1,20 @@
+{
+    "main": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-baseball-api-main-175902-authRole",
+            "UnauthRoleArn": "arn:aws:iam::226523701903:role/amplify-baseball-api-main-175902-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::226523701903:role/amplify-baseball-api-main-175902-authRole",
+            "Region": "us-west-2",
+            "DeploymentBucketName": "amplify-baseball-api-main-175902-deployment",
+            "UnauthRoleName": "amplify-baseball-api-main-175902-unauthRole",
+            "StackName": "amplify-baseball-api-main-175902",
+            "StackId": "arn:aws:cloudformation:us-west-2:226523701903:stack/amplify-baseball-api-main-175902/2354ad80-7deb-11ea-b0eb-0682562e98ce",
+            "AmplifyAppId": "d3p942vpn67z01"
+        },
+        "categories": {
+            "auth": {
+                "baseballapi523c4bc2": {}
+            }
+        }
+    }
+}

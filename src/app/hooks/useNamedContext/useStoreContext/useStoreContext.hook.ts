@@ -3,9 +3,7 @@ import { StoreContext } from "../../../contexts";
 
 export function useStoreContext() {
   try {
-    const x = React.useContext(StoreContext);
-    console.log({ x });
-    return x;
+    return React.useContext(StoreContext);
   } catch (e) {
     throw new Error("Stote Context Must be Nested in a StateContext.Provider");
   }

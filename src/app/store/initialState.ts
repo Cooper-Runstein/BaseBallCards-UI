@@ -1,7 +1,8 @@
 import { BaseBallCardType } from "../types";
+import { ListCardsQuery } from "../../API";
 
 export type AppStateType = {
-  cards: BaseBallCardType[];
+  cards: ListCardsQuery;
 };
 
-export const initialState: AppStateType = { cards: [] };
+export const initialState: AppStateType = { cards: {} as ListCardsQuery };

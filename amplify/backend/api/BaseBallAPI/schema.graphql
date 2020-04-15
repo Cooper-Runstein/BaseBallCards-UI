@@ -1,0 +1,27 @@
+type Card @model {
+  id: ID!
+  year: String!
+  playerID: ID!
+  teamID: ID!
+  companyID: ID!
+  player: Player @connection(fields: ["playerID"])
+  team: Team @connection(fields: ["teamID"])
+  company: Company @connection(fields: ["companyID"])
+}
+
+type Player @model {
+  id: ID!
+  firstName: String!
+  lastName: String!
+}
+
+type Team @model {
+  id: ID!
+  name: String!
+  city: String!
+}
+
+type Company @model {
+  id: ID!
+  name: String!
+}
