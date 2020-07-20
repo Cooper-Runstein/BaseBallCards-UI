@@ -18,7 +18,7 @@
     "aws-amplify-react": "^4.1.6",
     "classnames": "^2.2.6",
     "immer": "^6.0.3",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "node-sass": "^4.13.1",
     "ramda": "^0.27.0",
     "react": "^16.13.1",
